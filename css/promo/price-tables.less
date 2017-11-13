@@ -1,0 +1,463 @@
+
+/* ==========================================================================
+   Colors
+   ========================================================================== */
+
+@pt_red: #d95454;
+@pt_pink: #e856c4;
+@pt_purple: #b356e8;
+@pt_blue: #5663e8;
+@pt_cyan: #6db8da;
+@pt_green: #6fb773;
+@pt_yellow: #d7d361;
+@pt_orange: #d27740;
+@pt_grey: #37353c;
+
+
+/* ==========================================================================
+   The price table
+   ========================================================================== */
+
+.price-table {
+	font-family: 'Helvetica Neue', Helvetica, Arial;
+	.clearfix();
+	width: 100%;
+
+		&.hover {
+
+				.column:hover {
+					-webkit-transition: .2s, .2s;
+					-moz-transition: .2s, .2s;
+					transition: .2s, .2s;
+					.box-shadow(0 0 5px #222);
+					z-index: 2;
+				}
+		}
+
+		.column {
+			position: relative;
+			float: left;
+			height: auto;
+			/* Uncomment for a nice, white border. Removes IE6 and IE7 support. */
+			.box-sizing(border-box);
+			border: 1px solid #fff;
+			z-index: 1;
+			.box-shadow(0 0 2px #333);
+
+
+				&.rounded {
+					.border-radius(10px 10px 0 0);
+				}
+
+				&.highlight, &.highlight:hover {
+					.box-shadow(5px 5px 10px -5px #333, -5px 5px 10px -5px #333);
+					z-index: 3;
+					margin-top: -10px;
+					border: 0px;
+						
+						header {
+							padding-bottom: 35px;
+						}		
+
+						footer {
+							padding: 25px 0 35px 0;
+						}
+				}
+
+				header {
+					position: relative;
+					padding-bottom: 25px;
+
+
+						h1, h2, h3, h4, h5, h6 {
+							text-align: center;
+							padding: 15px 0 12px 0;
+							color: #fff;
+							font-size: 18px;
+							text-shadow: 0px -1px #333;
+							border-bottom: 1px solid rgba(0, 0, 0, .2);
+							margin: 0px;
+							font-weight: bold;
+							letter-spacing: 1px;
+							text-transform: uppercase;
+							font-size: 11px;
+						}
+
+						&.rounded {
+							.border-radius(10px 10px 0 0);
+						}
+
+						div.price {
+							text-align: center;
+							color: #fff;
+							font-weight: 300;
+							width: 100%;
+							border-top: 1px solid rgba(255, 255, 255, .2);
+							padding-top: 15px;
+
+								.price {
+									position: relative;
+									font-size: 70px;
+									line-height: 1;
+									text-shadow: -1px -1px #444;
+
+									.dollar {
+										position: absolute;
+										font-size: 14px;
+										left: -10px;
+										top: 18px;
+										text-shadow: -1px -1px #444;
+									}
+
+									.month {
+										position: absolute;
+										font-size: 14px;
+										right: -25px;
+										bottom: 15px;
+										text-shadow: -1px -1px #444;
+									}
+								}
+	
+						}
+				}
+
+
+				.data {
+					display: block;
+					background: #f5f5f5;
+
+						ul {
+							background: #fefefe;
+							margin: 0px !important;
+							display: block;
+							padding: 0px;
+							width: 100%;
+
+								li {
+									list-style: none;
+									font-weight: 300;
+									color: #666;
+									font-size: 13px;
+									padding: 12px 5px;
+									text-align: center;
+
+										strong {
+											color: #555;
+										}
+
+										&.even {
+											background: #f5f5f5;
+											border-top: 1px solid #fff;
+											border-bottom: 1px solid #eee;
+										}
+
+										&.odd {
+											border-top: 1px solid #fff;
+											background: #fcfcfc;
+											border-bottom: 1px solid #eee;
+										}
+
+										// the tooltips
+										a {
+											position: relative;
+											color: #555;
+											text-decoration: none;
+											border-bottom: 1px dotted #444;
+
+
+												&:hover {
+													position: relative;
+													cursor: help;
+												}
+
+										}
+								}
+						}
+				}
+
+
+				footer {
+					display: block;
+					text-align: center;
+					background: #f0f0f0;
+					padding: 25px 0;
+					border-top: 1px solid #fcfcfc;
+
+						.button  {
+							text-decoration: none;
+							font-size: 11px;
+							display: block;
+							letter-spacing: 1px;
+							text-transform: uppercase;
+							margin: 0 25px;
+							color: #4d4d4d;
+							padding: 8px 20px;
+							background: #444;
+							background: -moz-linear-gradient(top, #555 0%, #444);
+							background: -webkit-gradient(linear, left top, left bottom, from(#555), to(#444));
+							-moz-border-radius: 3px;
+							-webkit-border-radius: 3px;
+							border-radius: 3px;
+							border: 0px solid #454445;
+							color: #eee;
+							-moz-box-shadow: 0px 1px 2px rgba(000,000,000,0.4), inset 0px 0px 1px rgba(225,225,225,1);
+							-webkit-box-shadow: 0px 1px 2px rgba(000,000,000,0.4), inset 0px 0px 1px rgba(225,225,225,1);
+							box-shadow: 0px 1px 2px rgba(000,000,000,0.4), inset 0px 0px 1px rgba(225,225,225,1);
+						}
+				}
+
+		}
+
+		&.four-columns {
+			.column {
+				width: 25%;
+			}
+		}
+
+		&.three-columns {
+			.column {
+				width: 33.333%;
+			}
+		}
+
+		&.two-columns {
+			.column {
+				width: 50%;
+			}
+		}
+
+		&.one-columns {
+			.column {
+				width: 100%;
+			}
+		}
+
+	.red {
+		background: @pt_red;
+		&.dark { background: darken(@pt_red, 10%); }
+		&.light  {background: lighten(@pt_red, 10%); }
+	}
+	.pink {
+		background: @pt_pink;
+		&.dark { background: darken(@pt_pink, 10%); }
+		&.light  {background: lighten(@pt_pink, 10%); }
+	}
+	.purple {
+		background: @pt_purple;
+		&.dark { background: darken(@pt_purple, 10%); }
+		&.light  {background: lighten(@pt_purple, 10%); }
+	}
+	.blue {
+		background: @pt_blue;
+		&.dark { background: darken(@pt_blue, 10%); }
+		&.light  {background: lighten(@pt_blue, 10%); }
+	}
+	.cyan {
+		background: @pt_cyan;
+		&.dark { background: darken(@pt_cyan, 10%); }
+		&.light  {background: lighten(@pt_cyan, 10%); }
+	}
+	.green {
+		background: @pt_green;
+		&.dark { background: darken(@pt_green, 10%); }
+		&.light  {background: lighten(@pt_green, 10%); }
+	}
+	.yellow {
+		background: @pt_yellow;
+		&.dark { background: darken(@pt_yellow, 10%); }
+		&.light  {background: lighten(@pt_yellow, 10%); }
+	}
+	.orange {
+		background: @pt_orange;
+		&.dark { background: darken(@pt_orange, 10%); }
+		&.light  {background: lighten(@pt_orange, 10%); }
+	}
+	.grey {
+		background: @pt_grey;
+		&.dark { background: darken(@pt_grey, 10%); }
+		&.light  {background: lighten(@pt_grey, 10%); }
+	}
+
+}
+
+/* ==========================================================================
+   Media queris(for responsive)
+   ========================================================================== */
+
+@media (max-width: 880px) {
+	
+	.price-table .column header div.price { 
+		.price { font-size: 40px; }
+		.price .dollar { top: 10px; left: -12px; }
+		.price .month { bottom: 7px; right: -25px; }
+	}
+}
+
+
+
+@media (max-width: 750px) {
+
+	.price-table {
+
+		&.four-columns, &.three-columns {
+
+			.column {
+				width: 100%;
+				display: block;
+				.border-radius(10px);
+				margin-bottom: 10px;
+				.box-shadow(0 0 2px #333);
+
+					&.highlight {
+						.box-shadow(0 0 2px #333);
+						margin-top: 0px;
+					}
+
+					.data {
+						.clearfix();
+
+							ul {
+								.clearfix();
+								background: #fcfcfc !important;
+
+									li {
+										float: left;
+										width: 33%;
+										box-sizing: border-box;
+
+											&.odd, &.even {
+												border: 0px !important;
+												background: #fcfcfc !important;
+											}
+
+											strong {
+												display: block;
+											}
+									}
+							}
+
+					}
+
+					footer {
+						padding: 35px 0 35px 0;
+						.border-radius(0 0 10px 10px);
+					}
+			}
+		}
+
+	}
+
+}
+
+
+/* ==========================================================================
+   Toltip
+   ========================================================================== */
+
+@zindexTooltip:           1030;
+@tooltipColor:            #fff;
+@tooltipBackground:       #000;
+@tooltipArrowWidth:       5px;
+@tooltipArrowColor:       @tooltipBackground;
+
+// Base class
+.tooltip {
+  position: absolute;
+  z-index: @zindexTooltip;
+  display: block;
+  visibility: visible;
+  padding: 5px;
+  font-size: 12px;
+  .opacity(0);
+  &.in     { .opacity(80); }
+  &.top    { margin-top:  -3px; }
+  &.right  { margin-left:  3px; }
+  &.bottom { margin-top:   3px; }
+  &.left   { margin-left: -3px; }
+}
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+  max-width: 200px;
+  padding: 8px 12px;
+  color: @tooltipColor;
+  text-align: center;
+  text-decoration: none;
+  background-color: @tooltipBackground;
+  .border-radius(15px);
+}
+
+// Arrows
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.tooltip {
+  &.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth @tooltipArrowWidth 0;
+    border-top-color: @tooltipArrowColor;
+  }
+  &.right .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth @tooltipArrowWidth @tooltipArrowWidth 0;
+    border-right-color: @tooltipArrowColor;
+  }
+  &.left .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -@tooltipArrowWidth;
+    border-width: @tooltipArrowWidth 0 @tooltipArrowWidth @tooltipArrowWidth;
+    border-left-color: @tooltipArrowColor;
+  }
+  &.bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -@tooltipArrowWidth;
+    border-width: 0 @tooltipArrowWidth @tooltipArrowWidth;
+    border-bottom-color: @tooltipArrowColor;
+  }
+}
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.opacity(@opacity) {
+  opacity: @opacity / 100;
+  filter: ~"alpha(opacity=@{opacity})";
+}
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+
+.box-shadow(@shadowA, @shadowB:X, ...){
+  @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+  -webkit-box-shadow: @props;
+     -moz-box-shadow: @props;
+          box-shadow: @props;
+}
