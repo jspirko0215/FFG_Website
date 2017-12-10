@@ -1,10 +1,20 @@
-<html lang="en">
-
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 <head>
-    <title><?php echo $title; ?></title>
-    <meta name="resource-type" content="document"/>
-    <meta name="robots" content="all, index, follow"/>
-    <meta name="googlebot" content="all, index, follow"/>
+    <meta charset="utf-8"/>
+    <title>Fit For Green | human energy to generate electricity </title>
+    <meta name="description" content="human generated electricity"/>
+    <meta name="keywords"
+          content="human energy,power gym,energy gym,green energy,generate electricity,human generated electricity,green gyms,green gym equipment"/>
+    <meta name="viewport" content="width=device-width"/>
+
     <?php
     /** -- Copy from here -- */
     if (!empty($meta))
@@ -40,31 +50,7 @@
     /** -- to here -- */
     ?>
 
-    <!-- Le styles -->
-    <link href="<?php echo base_url(); ?>assets/themes/default/hero_files/bootstrap.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/themes/default/hero_files/bootstrap-responsive.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>css/promo/main.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>css/promo/style.css" rel="stylesheet">
 
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/themes/default/images/favicon.png"
-          type="image/x-icon"/>
-    <meta property="og:image" content="<?php echo base_url(); ?>assets/themes/default/images/facebook-thumb.png"/>
-    <link rel="image_src" href="<?php echo base_url(); ?>assets/themes/default/images/facebook-thumb.png"/>
-
-
-    <meta charset="utf-8"/>
-    <title>Fit For Green | human energy to generate electricity </title>
-    <meta name="description" content="human generated electricity"/>
-    <meta name="keywords"
-          content="human energy,power gym,energy gym,green energy,generate electricity,human generated electricity,green gyms,green gym equipment"/>
-    <meta name="viewport" content="width=device-width"/>
     <!--[if lte IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <link rel="shortcut icon" href="/images/favicon.png"/>
@@ -76,51 +62,82 @@
           type='text/css'/>
 
     <script type="text/javascript" src="/js/promo/jquery.js"></script>
+    <script type="text/javascript">
+        <?php if($this->uri->segment(1) == '')
+        { ?>
+
+        $(document).ready(function () {
+            $counters = $this - > config - > config - > item('counters');
+            $('#energy').acounters({
+                method: '1',
+                number: <?php echo round($counters['wattHoursCount'] / 1000, 2); ?>,
+                suffix: 'kW/h'
+            });
+            $('#social').acounters({method: '2', number: <?php echo $counters['membersCount']; ?>, suffix: 'member'});
+            $('#competitions').acounters({number: <?php echo $counters['teamsCount']; ?>, suffix: 'team', method: '3'});
+
+        });
+        <?php } ?>
+
+
+    </script>
 
 </head>
+<body onresize="resizeH()" onLoad="resizeH()">
+<script type="text/javascript">
 
-<body>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23102242-1']);
+    _gaq.push(['_trackPageview']);
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <img src="<?php echo base_url(); ?>assets/themes/default/images/logo.png"
-                 style="float:left;margin-top:0px;z-index:5" alt="logo"/>
-            <div style="height: 0px;" class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="active"><a href="<?php echo site_url(); ?>">HOME</a></li>
-                    <li><a href="<?php echo site_url('example/products'); ?>">PRODUCTS</a></li>
-                    <!--
-                <ul>
-                    <li <?php echo 'class="current-menu-item"'; ?>><a href="/products">In-Gym Solution</a></li>
-                </ul>
-                -->
-                    <li><a href="<?php echo site_url('example/about'); ?>">ABOUT</a></li>
-                    <li><a href="<?php echo site_url('example/team'); ?>">MANAGEMENT TEAM</a></li>
-                    <li><a href="<?php echo site_url('example/contactus'); ?>">CONTACT US</a></li>
-                    <li><a href="<?php echo site_url('example/blog'); ?>">BLOG</a></li>
-                    <li><a href="<?php echo site_url('example/login'); ?>">LOGIN</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
-    </div>
-</div>
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
 
-<div class="container">
-    <?php if ($this->load->get_section('text_header') != '') { ?>
-        <h1><?php echo $this->load->get_section('text_header'); ?></h1>
-    <?php } ?>
-    <div class="row">
-        <?php echo $output; ?>
-        <?php echo $this->load->get_section('sidebar'); ?>
-    </div>
-</div>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser
+    today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better
+    experience this site.</p>
+<![endif]-->
 
+<!-- Header area ================== -->
+<header id="header">
+    <div class="container">
+        <a href="/"><img src="assets/themes/default/images/logo.png" alt="FitForGreen"/></a>
+
+        <nav id="mainmenu" class="menu">
+            <ul>
+                <li class="current-menu-item"><a href="/">Home</a></li>
+                <li><a href="#">Products</a>
+                    <ul>
+                        <li><a href="/products">In-Gym Solution</a></li>
+                    </ul>
+                    <!-- <li ><a href="#">About</a>
+                        <ul>
+                            <li ><a href="/energy">Renewable Energy</a></li>
+                            <li ><a href="/social">Social Media</a></li>
+
+                        </ul>
+                    </li> -->
+                <li><a href="/about">About</a></li>
+                <li><a href="/team">Management Team</a></li>
+                <!--<li ><a href="/blog">Blog</a></li>-->
+                <li><a href="/contactus">Contact us</a></li>
+                <li><a href="/blog">Blog</a>
+                <li><a href="/members">Login</a></li>
+            </ul>
+        </nav>
+
+    </div><!-- /container -->
+</header><!-- /header -->
+
+<?php echo $output; ?>
 <!-- Footer area ================== -->
 <footer id="footer">
 
@@ -129,7 +146,6 @@
     <!-- Features area ================= -->
     <section class="features">
         <?php $counters = $this->config->item('counters'); ?>
-
         <div class="container">
             <div class="row-fluid">
 
@@ -166,16 +182,13 @@
     <section class="content">
 
         <div class="container">
-
             <div class="row-fluid">
 
                 <div class="span3 widget">
                     <h4>About Fit For Green</h4>
-                    <ul class="unstyled">
-                        <li>
-                            <a href="https://www.youtube.com/watch?v=bFseO2wBkTI">Introductory video </a>
-                        </li>
-                    </ul>
+                    <li><a href="http://www.youtube.com/watch?v=RpUVw_rOl6c">This introductory video presentation will
+                            feature an explanation of the Fit for Green solution, and give a current status of the
+                            company and products.</a>
                 </div>
 
                 <div class="span3 widget">
@@ -271,9 +284,7 @@
         shadow: 0                               //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
     });
 </script>
-
 <div id="fb-root"></div>
-
 <script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -281,8 +292,7 @@
         js.id = id;
         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=284269505019152";
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 </body>
 </html>

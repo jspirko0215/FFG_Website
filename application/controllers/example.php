@@ -4,50 +4,64 @@ class Example extends CI_Controller {
 
 	function __construct()
 	{
-		parent::__construct();
+
+        parent::__construct();
+        $this->load->helper('language');
+        $this->load->helper('url');
+        $this->_init();
+        //$this->template->set_template('promo');
         $this->load->model('global_model');
         $res=$this->global_model->getPromoCounters();
         $this->config->set_item('counters',$res);
-		$this->load->helper('url');
 
-		$this->_init();
+
+        //parent::__construct();
+        //$this->load->model('global_model');
+        //$res=$this->global_model->getPromoCounters();
+        //$this->config->set_item('counters',$res);
+        //$this->load->helper('url');
+
+        //$this->_init();
 	}
 
 	private function _init()
 	{
-		$this->output->set_template('template');
+        $this->output->set_template('new_site_template');
 
 		$this->load->js('assets/themes/default/js/jquery-1.9.1.min.js');
-		$this->load->js('assets/themes/default/hero_files/bootstrap-transition.js');
+        $this->load->js('assets/themes/default/hero_files/bootstrap-transition.js');
 		$this->load->js('assets/themes/default/hero_files/bootstrap-collapse.js');
 	}
 
 
 	public function index()
 	{
-		echo "<br>";
-        echo "<br>";
-        $this->load->view('promo/content');
+        $this->load->view('/promo/content',
+            array('content' => $this->load->view('/promo/page_tpl/land.php',
+                array('slider' => $this->load->view('/promo/slider.php', '', true)), TRUE)));
+
 	}
 
     public function home()
     {
-        echo "<br>";
-        echo "<br>";
         $this->load->view('themes/page_tpl/home');
     }
 
     public function team()
     {
-        echo "<br>";
-        echo "<br>";
+
         $this->load->view('themes/page_tpl/team');
+    }
+
+    public function about()
+    {
+
+        $this->load->view('themes/page_tpl/about');
     }
 
     public function contactus()
     {
-        echo "<br>";
-        echo "<br>";
+
         $this->load->view('themes/contactus');
     }
 

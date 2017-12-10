@@ -7402,6 +7402,7 @@ hr {
 }
 img {
   vertical-align: middle;
+  horizontal-align: middle;
 }
 fieldset {
   border: 0;
@@ -7426,7 +7427,7 @@ textarea {
 #header {
   background: #fff;
   *zoom: 1;
-  padding: 10px 0 7px 0;
+  padding: 0px 0 0px 0;
   border-bottom: 4px solid #eee;
 }
 #header:before,
@@ -8513,11 +8514,10 @@ footer section.content address {
   margin-bottom: 8px;
 }
 footer section.content li {
-  margin: 5px 15px;
+  margin: 5px 0;
 }
 footer section.content a {
-  color: #5882FA;
-  text-decoration: underline;
+  color: #f8f8f8;
 }
 footer section.content a:hover {
   color: #fff;

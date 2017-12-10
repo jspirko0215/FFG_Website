@@ -6,20 +6,11 @@ class Promo extends CI_Controller
         parent::__construct();
         $this->load->helper('language');
         $this->load->helper('url');
-        $this->_init();
-        //$this->template->set_template('promo');
-        //$this->load->model('global_model');
-        //$res=$this->global_model->getPromoCounters();
-        //$this->config->set_item('counters',$res);
-    }
-
-    private function _init()
-    {
-        $this->output->set_template('default');
-
-        $this->load->js('assets/themes/default/js/jquery-1.9.1.min.js');
-        $this->load->js('assets/themes/default/hero_files/bootstrap-transition.js');
-        $this->load->js('assets/themes/default/hero_files/bootstrap-collapse.js');
+        //$this->_init();
+        $this->output->set_template('promo');
+        $this->load->model('global_model');
+        $res = $this->global_model->getPromoCounters();
+        $this->config->set_item('counters', $res);
     }
 
     public function render($options)

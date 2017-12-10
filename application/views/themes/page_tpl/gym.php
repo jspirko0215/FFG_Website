@@ -57,7 +57,7 @@
                     },
                     yAxis: {
                         title: {
-                            text: 'Watt'
+                            text: 'Watthours'
                         },
                         plotLines: [{
                                 value: 0,

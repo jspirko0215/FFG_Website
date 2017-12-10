@@ -1,5 +1,4 @@
-<?php  echo $header; ?> 
-<div id="wrap">   
+<div id="wrap">
         <?php  echo $slider; ?>
          
         <!-- Content area ================= -->    
@@ -11,10 +10,11 @@
 
                         <div class="widget call-to-action">
                             <div class="span9">
-                                <p>New FitForGreen's Application for smartphones</p>
+                                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Contact Fit for Green for
+                                    More Information</p>
                             </div>
                             <div class="span3">
-                                <a href="/prereg" class="btn btn-cta">Get it now &raquo;</a>
+                                <a href="/prereg" class="btn btn-cta">Contact Now &raquo;</a>
                             </div>
                         </div><!-- /call-to-action -->
 
@@ -25,44 +25,6 @@
         </div><!-- /main -->
         <div style="float: left; height: 40px; width: 100%;"></div>
     </div>
-
- <!-- Footer area ================== -->
-    <footer id="footer" style="background-color: #fff; float: left; height: 40px; margin-top: -40px; width: 100%;">
-
-        <!-- Footer bottom ================= -->
-        <section class="bottom" style="padding:0;">
-
-            <!--<div class="container">        
-            <style type="text/css">
-            #header nav ul li a {
-                padding: 6px 10px 10px;
-            }
-            
-            #header nav {
-                margin-top: 30px;
-            }
-        
-        </style>
-                <div class="row-fluid">
-                    <div id="header" style="border-bottom:0;">
-                        <div class="container">
-                            <a href="/"><img src="images/promo/logo.png" alt="FitForGreen" /></a>
-                            <?php //echo $menu; // ul top:-130px; ?> 
-                        </div>
-                    </div>
-                </div>
-            </div>--> <!-- /container -->
-            <!--<hr style="border-bottom:4px solid #eee; margin:0 0 20px 0;" />-->
-            <div class="container">
-                <div class="row-fluid">            
-                    <p class="span12 copyright">Copyright &copy; Fit for Green. All rights reserved</p>
-                </div>
-            </div><!-- /container -->
-
-        </section>
-
-    </footer><!-- /footer -->
-
 
         <!-- Load scripts ================= -->
 
@@ -111,7 +73,5 @@
                 shadow:0                               //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)    
             });
         </script>
-
-
     </body>
 </html>

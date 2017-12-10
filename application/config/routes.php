@@ -60,12 +60,13 @@ $route['404_override'] = '';
 
 $route['profile/(:any)'] = "profile/info/$1";
 $route['cases'] =      "/promo/cases";
-//$route['team'] =        "/example/team";
+$route['team'] = "/example/team";
+$route['about'] = "/example/about";
 $route['contactus'] =   "/example/contactus";
 $route['energy'] =   "/promo/energy";
 $route['social'] =   "/promo/social";
 $route['competition'] =   "/promo/competition";
-$route['contactus'] =   "/promo/contactus";
+//$route['contactus'] =   "/promo/contactus";
 $route['edit_profile'] = "members/myprofile";
 $route['land'] = "/promo/land";
 $route['prereg'] = "/promo/prereg";
