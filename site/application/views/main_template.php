@@ -79,8 +79,7 @@
     </head>
     <body <?php echo( ($action == 'login' || $action == 'registration' || $action == 'forgot' || $action =='change_password') ? 'id="login"' : ''); ?> style="height:100%">
 
-    <?php echo $header; ?>
-    
+
     <?php if ($action != 'login' && $action != 'registration' && $action != 'forgot' && $action != 'change_password'): ?>
             <div id="pageoptions">
                 <ul>
@@ -116,7 +115,7 @@
      <?php endif; ?>
         
         <div id="content">
-            <?php echo $content; ?>
+            <?php echo $output; ?>
         </div>    
     <div id="fb-root"></div>   
     <footer>

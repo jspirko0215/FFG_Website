@@ -1,5 +1,6 @@
 <script type="text/javascript" src="/js/highcharts/highcharts.js"></script>
 <script type="text/javascript" src="/js/highcharts/themes/grid.js"></script>
+<link rel="shortcut icon" href="/images/favicon.png"/>
 
 <script type="text/javascript">
     var chart;

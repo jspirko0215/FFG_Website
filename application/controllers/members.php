@@ -10,7 +10,10 @@ class Members extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('language');
-        $this->output->set_template('main');
+        $this->load->helper('url');
+        $this->load->helper('functions');
+
+        $this->output->set_template('main_template');
 
         // The fb_ignited library is already auto-loaded so call the user and app.
         // $this->fb_me = $this->fb_ignited->fb_get_me();
@@ -166,11 +169,8 @@ class Members extends CI_Controller
             $data['password'] = '';
         }
 
-        $data['fb'] = $this->fb_app;
-        $data['cron_facebookid'] = $this->config->item('cron_facebookid');
+        $this->load->view('login_view', $data);
 
-        $this->template->write_view('content', 'login_view.php', $data);
-        $this->template->render();
     }
 
     public function forgot()
@@ -291,7 +291,7 @@ class Members extends CI_Controller
 
 
         //$this->widget->set('office_view', 'widget_1', 1);
-        $data['widget_9'] = $this->widget->getWidgetGlobalStats();
+        //$data['widget_9'] = $this->widget->getWidgetGlobalStats();
 
         $data['widget_1'] = $this->widget->getWidgetLastVisitsGraph();
         $data['widget_2'] = $this->widget->getWidgetLastVisits();
