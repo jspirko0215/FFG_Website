@@ -7474,7 +7474,7 @@ textarea {
 #header nav ul li.current-menu-item > a,
 #header nav ul li.current-menu-parent > a {
   color: #ffffff;
-  background-color: #69bc34;
+    background-color: #2F4F4F;
 }
 #header nav ul li ul {
   display: none;
