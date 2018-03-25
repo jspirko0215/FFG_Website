@@ -60,6 +60,7 @@ $route['404_override'] = '';
 
 $route['profile/(:any)'] = "profile/info/$1";
 $route['cases'] =      "/promo/cases";
+$route['products'] = "/example/products";
 $route['team'] = "/example/team";
 $route['about'] = "/example/about";
 $route['contactus'] =   "/example/contactus";
@@ -70,4 +71,3 @@ $route['competition'] =   "/promo/competition";
 $route['edit_profile'] = "members/myprofile";
 $route['land'] = "/promo/land";
 $route['prereg'] = "/promo/prereg";
-$route['products'] = "/promo/presentation";

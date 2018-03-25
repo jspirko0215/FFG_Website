@@ -30,7 +30,7 @@ class Promo extends CI_Controller
         $this->template->write_view('content', '/promo/content.php',
                 array('content' => $this->load->view('/promo/page_tpl/home1.php',
                 array('slider' => $this->load->view('/promo/slider.php', '',true),
-                    'menu' => $this->load->view('/promo/menu.php', array('k'=> 1),true)), TRUE)));
+                    '' => $this->load->view('/promo/menu.php', array('k'=> 1),true)), TRUE)));
         */
         //$this->template->write_view('header',  '/promo/header.php', array('menu' => $this->load->view('/promo/menu.php', array('k'=> 1), TRUE)));
 

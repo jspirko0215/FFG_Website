@@ -10,9 +10,6 @@ class Members extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('language');
-        $this->load->helper('url');
-        $this->load->helper('functions');
-
         $this->output->set_template('main_template');
 
         // The fb_ignited library is already auto-loaded so call the user and app.
@@ -49,8 +46,8 @@ class Members extends CI_Controller
         $data = array();
         $this->load->model('member_model');
         $data['visits'] = $this->member_model->getMemberLastVisits($this->session->userdata('logOn'), 500);
-        $this->template->write_view('content', 'detailed_stats.php', $data);
-        $this->template->render();
+        $this->load->view('detailed_stats.php', $data);
+        //$this->template->render();
     }
 
     public function check_fb()
@@ -169,8 +166,11 @@ class Members extends CI_Controller
             $data['password'] = '';
         }
 
-        $this->load->view('login_view', $data);
+        //$data['fb'] = $this->fb_app;
+        //$data['cron_facebookid'] = $this->config->item('cron_facebookid');
 
+        $this->load->view('login_view.php', $data);
+        //$this->template->render();
     }
 
     public function forgot()
@@ -212,8 +212,7 @@ class Members extends CI_Controller
         }
 
 
-        $this->template->write_view('content', 'forgot_pass_view.php', $data);
-        $this->template->render();
+        $this->load->view('forgot_pass_view.php', $data);
     }
 
     public function change_password()
@@ -290,8 +289,9 @@ class Members extends CI_Controller
         $user_id = $this->session->userdata('logOn');
 
 
+
         //$this->widget->set('office_view', 'widget_1', 1);
-        //$data['widget_9'] = $this->widget->getWidgetGlobalStats();
+        $data['widget_9'] = $this->widget->getWidgetGlobalStats();
 
         $data['widget_1'] = $this->widget->getWidgetLastVisitsGraph();
         $data['widget_2'] = $this->widget->getWidgetLastVisits();
@@ -305,8 +305,8 @@ class Members extends CI_Controller
         $data['uid'] = $user_id;
 
 
-        $this->template->write_view('content', 'dashboard.php', $data);
-        $this->template->render();
+        $this->load->view('dashboard.php', $data);
+        //$this->template->render();
     }
 
     function myprofile()
@@ -315,7 +315,7 @@ class Members extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->model('member_model', '', TRUE);
         $this->load->library('form_validation');
-        $this->fb_app = $this->fb_ignited->fb_get_app();
+        //$this->fb_app = $this->fb_ignited->fb_get_app();
 
         $uid = $this->session->userdata('logOn');
         if (!$uid)
@@ -333,6 +333,7 @@ class Members extends CI_Controller
             'password' => '',
             'facebook' => ''
         );
+
 
 
         $config = array(
@@ -448,8 +449,8 @@ class Members extends CI_Controller
 
 
         $data['fb'] = $this->fb_app;
-        $this->template->write_view('content', 'profile_edit_view.php', $data);
-        $this->template->render();
+        $this->load->view('profile_edit_view.php', $data);
+        //$this->template->render();
     }
 
     function email_check($email)
@@ -457,6 +458,7 @@ class Members extends CI_Controller
         $uid = $this->session->userdata('logOn');
         if (!$uid)
             redirect('members/login'); // If no session, redirect to Login
+
 
 
 //$this->load->model('member_model', '', TRUE);
@@ -566,6 +568,87 @@ class Members extends CI_Controller
         $this->template->render();
     }
 
+    function posttofb($fb_uid = null, $msg_obj = null)
+    {
+        $this->fb_app = $this->fb_ignited->fb_get_app();
+
+
+        if (!$fb_uid) {
+            $fb_uid = $this->session->userdata('fb_id');
+            $uid = $this->session->userdata('logOn');
+        }
+        if ($this->input->post('message')) {
+
+            if ($this->input->post('message') && $this->input->post('message') == 'burger') {
+                $token = file_get_contents("https://graph.facebook.com/oauth/access_token?client_id=" . $this->fb_app['fb_appid'] . "&client_secret=" . $this->fb_app['fb_secret'] . "&grant_type=client_credentials");
+                $params = null;
+                parse_str($token, $params);
+                $access_token = $params['access_token'];
+                //print_r($access_token);
+
+                $this->load->model('member_model');
+                $fbid = $this->member_model->getFbifFromUid($uid);
+                $msg_obj = array('method' => 'feed',
+                    'message' => '',
+                    'picture' => 'http://www.fitforgreen.net/images/widgets/burger.png', //If available, a link to the picture included with this post
+                    'link' => 'http://www.facebook.com/pages/Fit-for-Green/196705463732605', //The link attached to this post
+                    'name' => 'My FitForGreen\'s progress', //The name of the link
+                    'caption' => '', //The caption of the link (appears beneath the link name)
+                    'description' => '', //A description of the link (appears beneath the link caption)'
+                    'icon' => 'http://www.fitforgreen.net/images/favicon.png', //A link to an icon representing the type of this post
+                );
+                $watts = $this->member_model->sumWattsPostFb($uid);
+                $calories = cal($watts->wattHours);
+                $equiv = round(cal($watts->wattHours) / 350, 1);
+                $msg_obj['description'] .= 'Over the last 30 days I burnt ' . $calories . ' calories, it\'s an equivalent of ' . $equiv . ' ¼ lb hamburgers';
+                $fb_uid = $fbid->facebook_id;
+            } elseif ($this->input->post('message') && $this->input->post('message') == 'bulb') {
+                $token = file_get_contents("https://graph.facebook.com/oauth/access_token?client_id=" . $this->fb_app['fb_appid'] . "&client_secret=" . $this->fb_app['fb_secret'] . "&grant_type=client_credentials");
+                $params = null;
+                parse_str($token, $params);
+                $access_token = $params['access_token'];
+                //print_r($access_token);
+
+                $this->load->model('member_model');
+                $fbid = $this->member_model->getFbifFromUid($uid);
+                $msg_obj = array('method' => 'feed',
+                    'access_token' => $access_token,
+                    'message' => '',
+                    'picture' => 'http://www.fitforgreen.net/images/widgets/bulb.png', //If available, a link to the picture included with this post
+                    'link' => 'http://www.facebook.com/pages/Fit-for-Green/196705463732605', //The link attached to this post
+                    'name' => 'My FitForGreen\'s progress', //The name of the link
+                    'caption' => '', //The caption of the link (appears beneath the link name)
+                    'description' => '', //A description of the link (appears beneath the link caption)'
+                    'icon' => 'http://www.fitforgreen.net/images/favicon.png', //A link to an icon representing the type of this post
+                );
+                $watts = $this->member_model->sumWattsPostFb($uid);
+                $hours = round($watts->wattHours / 60, 1) ? round($watts->wattHours / 60, 1) : round($watts->wattHours / 60, 2);
+                $msg_obj['description'] .= 'Over the last 30 days I generated ' . $watts->wattHours . ' watts, it\'s enough to light a typical house bulb for ' . $hours . ' hours';
+
+                $fb_uid = $fbid->facebook_id;
+                //die(print_r($access_token));
+            }
+        } else {
+            if (!$msg_obj) {
+                $msg_obj = array('method' => 'feed',
+                    'message' => '',
+                    'picture' => 'http://www.fitforgreen.net/images/widgets/bulb.png', //If available, a link to the picture included with this post
+                    'link' => 'http://www.fitforgreen.net', //The link attached to this post
+                    'name' => 'My Progress on FitForGreen', //The name of the link
+                    'caption' => '', //The caption of the link (appears beneath the link name)
+                    'description' => '0 watts, lights a typical house bulb for 0 hours', //A description of the link (appears beneath the link caption)'
+                    'icon' => 'http://www.fitforgreen.net/images/favicon.png', //A link to an icon representing the type of this post
+                );
+            }
+        }
+
+        $res = $this->fb_ignited->fb_feed("post", $fb_uid, $msg_obj);
+        if (!$res)
+            return false;
+        else
+            return true;
+    }
+
     function posttofbpage()
     {
 
@@ -596,6 +679,7 @@ class Members extends CI_Controller
             'caption' => '',
             'description' => 'Today Fit for Green members donated ' . cal($watts) . ' unwanted calories as they exercised.  We turned that into ' . $watts . ' watt-hours of green energy and offset our carbon footprint by ' . round($watts * 0.00059368, 2) . ' kg of CO2 !'
         );
+
 
 
         $t = $this->fb_ignited->fb_feed("post", $fb_pid, $msg_obj);
@@ -791,86 +875,7 @@ class Members extends CI_Controller
         // print_r($gyms);
     }
 
-    function posttofb($fb_uid = null, $msg_obj = null)
-    {
-        $this->fb_app = $this->fb_ignited->fb_get_app();
 
-
-        if (!$fb_uid) {
-            $fb_uid = $this->session->userdata('fb_id');
-            $uid = $this->session->userdata('logOn');
-        }
-        if ($this->input->post('message')) {
-
-            if ($this->input->post('message') && $this->input->post('message') == 'burger') {
-                $token = file_get_contents("https://graph.facebook.com/oauth/access_token?client_id=" . $this->fb_app['fb_appid'] . "&client_secret=" . $this->fb_app['fb_secret'] . "&grant_type=client_credentials");
-                $params = null;
-                parse_str($token, $params);
-                $access_token = $params['access_token'];
-                //print_r($access_token);
-
-                $this->load->model('member_model');
-                $fbid = $this->member_model->getFbifFromUid($uid);
-                $msg_obj = array('method' => 'feed',
-                    'message' => '',
-                    'picture' => 'http://www.fitforgreen.net/images/widgets/burger.png', //If available, a link to the picture included with this post
-                    'link' => 'http://www.facebook.com/pages/Fit-for-Green/196705463732605', //The link attached to this post
-                    'name' => 'My FitForGreen\'s progress', //The name of the link
-                    'caption' => '', //The caption of the link (appears beneath the link name)
-                    'description' => '', //A description of the link (appears beneath the link caption)'
-                    'icon' => 'http://www.fitforgreen.net/images/favicon.png', //A link to an icon representing the type of this post
-                );
-                $watts = $this->member_model->sumWattsPostFb($uid);
-                $calories = cal($watts->wattHours);
-                $equiv = round(cal($watts->wattHours) / 350, 1);
-                $msg_obj['description'] .= 'Over the last 30 days I burnt ' . $calories . ' calories, it\'s an equivalent of ' . $equiv . ' ¼ lb hamburgers';
-                $fb_uid = $fbid->facebook_id;
-            } elseif ($this->input->post('message') && $this->input->post('message') == 'bulb') {
-                $token = file_get_contents("https://graph.facebook.com/oauth/access_token?client_id=" . $this->fb_app['fb_appid'] . "&client_secret=" . $this->fb_app['fb_secret'] . "&grant_type=client_credentials");
-                $params = null;
-                parse_str($token, $params);
-                $access_token = $params['access_token'];
-                //print_r($access_token);
-
-                $this->load->model('member_model');
-                $fbid = $this->member_model->getFbifFromUid($uid);
-                $msg_obj = array('method' => 'feed',
-                    'access_token' => $access_token,
-                    'message' => '',
-                    'picture' => 'http://www.fitforgreen.net/images/widgets/bulb.png', //If available, a link to the picture included with this post
-                    'link' => 'http://www.facebook.com/pages/Fit-for-Green/196705463732605', //The link attached to this post
-                    'name' => 'My FitForGreen\'s progress', //The name of the link
-                    'caption' => '', //The caption of the link (appears beneath the link name)
-                    'description' => '', //A description of the link (appears beneath the link caption)'
-                    'icon' => 'http://www.fitforgreen.net/images/favicon.png', //A link to an icon representing the type of this post
-                );
-                $watts = $this->member_model->sumWattsPostFb($uid);
-                $hours = round($watts->wattHours / 60, 1) ? round($watts->wattHours / 60, 1) : round($watts->wattHours / 60, 2);
-                $msg_obj['description'] .= 'Over the last 30 days I generated ' . $watts->wattHours . ' watts, it\'s enough to light a typical house bulb for ' . $hours . ' hours';
-
-                $fb_uid = $fbid->facebook_id;
-                //die(print_r($access_token));
-            }
-        } else {
-            if (!$msg_obj) {
-                $msg_obj = array('method' => 'feed',
-                    'message' => '',
-                    'picture' => 'http://www.fitforgreen.net/images/widgets/bulb.png', //If available, a link to the picture included with this post
-                    'link' => 'http://www.fitforgreen.net', //The link attached to this post
-                    'name' => 'My Progress on FitForGreen', //The name of the link
-                    'caption' => '', //The caption of the link (appears beneath the link name)
-                    'description' => '0 watts, lights a typical house bulb for 0 hours', //A description of the link (appears beneath the link caption)'
-                    'icon' => 'http://www.fitforgreen.net/images/favicon.png', //A link to an icon representing the type of this post
-                );
-            }
-        }
-
-        $res = $this->fb_ignited->fb_feed("post", $fb_uid, $msg_obj);
-        if (!$res)
-            return false;
-        else
-            return true;
-    }
 
     function check_fb_assigned()
     {

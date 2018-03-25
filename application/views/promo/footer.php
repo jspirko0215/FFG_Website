@@ -12,7 +12,7 @@
                 <div class="span4 widget feature">
                     <a href="#">
                         <i class="icon-feature" id="feat1"></i>
-                        <h3>Total Workout Energy</h3>
+                        <h3>Energy Created</h3>
                         <h2><?php echo round($counters['wattHoursCount'] / 1000, 2); ?> kW/h</h2>
                     </a>
                 </div><!-- /feature#1 -->

@@ -1,3 +1,4 @@
+
 <script type="text/javascript" src="/js/highcharts/highcharts.js"></script>
 <script type="text/javascript" src="/js/highcharts/themes/grid.js"></script>
 <link rel="shortcut icon" href="/images/favicon.png"/>
@@ -21,7 +22,7 @@
             },
             yAxis: {
                 title: {
-                    text: 'Perfomance'
+                    text: 'Power Generated'
                 },
                 labels: {
                     formatter: function () {
@@ -61,7 +62,7 @@
 
             },
             series: [{
-                name: 'Comulative',
+                name: 'Cumulative',
                 color: '#4572A7',
                 type: 'spline',
                 data: <?php echo $wattsComulative;?>
@@ -145,13 +146,13 @@
 
 
     <!-- Header area ================== -->
-    <section class="header">
+    <!--<section class="header">
 
         <div class="container">
             <div class="row-fluid">
 
                 <div class="span12">
-                    <h1 class="page-title">Renewable Energy</h1>
+                    <h1 class="page-title">About Us</h1>
 
                     <p class="excerpt">
 
@@ -161,7 +162,7 @@
             </div>
         </div><!-- /container -->
 
-    </section><!-- /header -->
+    <!--</section><!-- /header -->
 
     <!-- Content area ================== -->
     <section class="content">
@@ -171,44 +172,93 @@
 
                 <!-- Content ================== -->
                 <div class="span12 page">
+
                     <img src="/images/promo/team/UCClassPic.jpg" class="alignleft"/>
-                    <h3 class="aligncenter">Who is Fit for Green</h3>
-                    <p>Fit for Green is a provider of commercial cardio equipment for Fitness Centers. Our equipment is
-                        unique because it engages participants in sustainability.
-                        <br/>&nbsp;&nbsp;&nbsp; Workouts on Fit for Green Equipment:<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Impacts Climate Change - By creating clean energy from exercise
-                        and feeding it back into the gym's power grid<br/>
+                    <h2 class="aligncenter">Who is Fit for Green?</h2>
+                    <p>Fit for Green is a provider of cardiovascular gym equipment for fitness centers and homes
+                        throughout the world.
+                        Our equipment is unique because it engages participants in sustainability and in doing so, makes
+                        them a member
+                        of a community of like minded people.
+                        <br/><br/>Exercising on Fit for Green Equipment has a triple impact:<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. Impacts Climate Change - By generating power from exercise and
+                        feeding it back into the gym's power
+                        grid<br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Impacts Natural Resource Preservation – By generating funds for
-                        charities that protect them<br/>
+                        environmental charities<br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Impacts Cardiovascular Fitness - By exercising as you would on
                         any cardiovascular machine <br/>
-                        The global impact of the offering is especially exciting for participants when considering there
-                        are over 6 million units in use throughout the world. The clean energy and funding potential are
-                        quite significant and the only requirement is that people continue to exercise as they do today
-                        to be part of it!
+                        &nbsp;&nbsp;<br/>
+                        Fit for Green's global impact is especially exciting when considering the potential in the 7
+                        million units in
+                        use throughout the world. Over time those could all be clean energy generators. The clean energy
+                        and
+                        funding potential are significant and the only requirement is that people continue to exercise
+                        as they do today
+                        in order to be part of it!
                     </p>
 
                 </div>
-                <br/>
-                <h3 class="aligncenter">Daily Progress</h3>
-                <div id="chart">
-                </div>
-                <br/>
                 <div class="feature-block">
-                    <img src="/images/promo/stickers/1_16.png" class="alignleft"/>
-
-                    <h3>Something New in the World of Green Energy</h3>
-                    <p>Fit for Green will increase healthily planet awareness. As people exercise and generate power it
-                        will not only be about them creating enough energy to light a bulb or charge an iPod but it will
-                        also be about realizing what energy is and how difficult it is to create it. Just imagine, after
-                        a grueling 1 hour cardio workout you look on the screen and see 150 watt-hours generated. Next
-                        you relate that work you did to something real, “I can light a 75 watt bulb for two hours”.
-                        Finally, take the work you did and realize that each time you leave that 75 watt bulb burning
-                        needlessly the same burden is put on your planet mostly by burning coal.</p>
-
+                    <div class="span2 widget feature">
+                        <a href="#">
+                            <i class="icon-feature" id="feat1"></i>
+                        </a>
+                    </div><!-- /feature#1 -->
+                    <h2 class="aligncenter">Power Generation</h2>
+                    <p>Power is generated and captured from every Fit for Green workout! The power captured is turned
+                        into grid power
+                        and is returned right back into the power outlet that the machine is plugged into. This is how
+                        the person
+                        exercising helps to power the gym so there is less of a need to draw power from the power
+                        company. In many
+                        cases 1 Fit for Green machine can make as much as a typical home solar panel. The chart shown
+                        below shows Fit
+                        for Green's cumulative power generation since inception.
+                    </p>
+                    <br/>
+                    <div id="chart">
+                    </div>
+                    <br/>
                 </div>
-                <br/>
-                <h3 class="aligncenter">Top Gyms</h3>
+                <div class="feature-block">
+                    <div class="span2 widget feature">
+                        <a href="#">
+                            <i class="icon-feature" id="feat2"></i>
+                        </a>
+                    </div><!-- /feature#2 -->
+                    <h2 class="aligncenter">Community and Network Effect</h2>
+                    <p> As the Fit for Green community grows in people and the number of enabled machines the impact
+                        obviously becomes
+                        more significant. The chart below shows the results with less than 50 machines connected. </p>
+                </div>
+                <div class="feature-block">
+                    <div class="span2 widget feature">
+                        <a href="#">
+                            <i class="icon-feature" id="feat3"></i>
+                        </a>
+                    </div><!-- /feature#3 -->
+                    <h2 class="aligncenter">Charity and Giving Back</h2>
+                    <p>Power is captured from every Fit for Green workout! The power captured is turned into grid power
+                        and it flows right back into the power outlet that the machine is plugged into. When nobody is
+                        exercising the screen draws a small amount of power from the the wall outlet but as soon as the
+                        machine is in motion power flows the other way. In other words the exerciser helps to power the
+                        gym so they draw less power from the power company. In many cases 1 Fit for Green machine can
+                        make as much as a typical home solar panel. </p>
+                </div>
+
+
+            </div>
+            <br/>
+            <h3 class="aligncenter">Community</h3>
+            <div id="chart">
+            </div>
+            <br/>
+
+
+        </div>
+        <br/>
+        <h3 class="aligncenter">Teaming</h3>
                 <div id="chart1">
                 </div>
 

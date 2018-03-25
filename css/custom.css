@@ -1,0 +1,185 @@
+#widget_panel_box {
+
+    margin-bottom: 10px;
+    overflow-x: auto;
+    overflow-y: auto;
+    margin-top: 8px;
+
+}
+
+.widget-dock {
+    display: none;
+    margin: 5px;
+    height: 150px;
+    padding-top: 10px;
+
+}
+
+#widget-dock .widget {
+    width: 141px;
+    height: 141px;
+    margin: 0 5px;
+    float: left;
+    display: inline
+}
+
+#widget-dock .widgets {
+    border-color: #ccc;
+}
+
+#widget-dock .sortable_placeholder {
+    height: 0px !important;
+    border: none !important;
+    margin-bottom: 0px !important
+}
+
+#widget-dock .widget .handle {
+    font-size: 11px !important;
+    line-height: 12px !important;
+    padding: 7px 5px !important
+}
+
+#widget-dock .widget .collapse {
+    display: none !important
+}
+
+#widget-dock .widget .reload {
+    display: none !important
+}
+
+#content .widget .widget-preview {
+    display: none
+}
+
+#content .widget .widget-content {
+    display: block
+}
+
+#widget-dock .widget .widget-content {
+    display: none
+}
+
+#widget-dock .widget .widget-preview {
+    display: block;
+    height: 110px !important;
+    width: 138px !important;
+    padding: 0;
+    margin: 0;
+}
+
+#rcol1 {
+    left: 0;
+    top: 0
+}
+
+#rcol2 {
+    left: 10px;
+    top: 0;
+}
+
+#rcol3 {
+    left: 20px;
+    top: 0;
+}
+
+#widget_panel_box .widgets { /*width:1500px;*/
+    overflow-x: auto
+}
+
+#widget_panel_box .widget {
+    width: 150px;
+    margin: 0 5px;
+    display: table-cell;
+}
+
+#widget_panel_box .widget .hadle {
+    font-size: 2px
+}
+
+#widget_panel_box .sortable_placeholder {
+    /* display: none !important;*/
+    height: 120px !important;
+    background: none !important;
+
+}
+
+#dashboard td {
+    vertical-align: top;
+    width: auto;
+    border: none !important;
+}
+
+#dashboard {
+}
+
+#dashboard .widgets {
+    min-height: 500px;
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+}
+
+#dashboard .widget {
+    overflow: hidden
+}
+
+.ui-resizable-handle {
+    height: 100px;
+    margin: 3px;
+}
+
+.ui-resizable-e {
+    right: -14px !important;
+}
+
+.e-hover {
+    background: red;
+}
+
+.simple {
+    height: 200px;
+    width: 500px;
+    border: 5px solid #aaa;
+}
+
+.simple1 {
+    height: 200px;
+    width: 500px;
+    border: 5px solid #aaa;
+}
+
+.simple1 div {
+    overflow: visible;
+}
+
+.simple div {
+    overflow: visible;
+}
+
+.vsplitbar {
+    width: 5px;
+    background: #cab;
+}
+
+.ui-layout-toggler-west div, .ui-layout-toggler-east div {
+    width: 16px;
+    height: 35px; /* 3x 35 = 105 total height */
+
+}
+
+.ui-layout-toggler-hover div, .ui-layout-toggler-sliding div {
+    width: 16px;
+    background: url(/images/split.gif) repeat-y 7px !important;
+    height: 35px; /* 3x 35 = 105 total height */
+}
+
+.ui-layout-resizer-hover {
+    background: url(/images/dotted.gif) repeat-y 8px !important;
+    width: 8px;
+    height: 35px; /* 3x 35 = 105 total height */
+}
+
+.ui-layout-resizer-drag {
+    background: url(/images/dotted.gif) repeat-y 8px;
+    width: 8px;
+    height: 35px; /* 3x 35 = 105 total height */
+}

@@ -163,7 +163,7 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: 'PT Sans', sans-serif;	
+  font-family: 'PT Sans', sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #52575f;
@@ -195,7 +195,7 @@ a:hover {
   border-radius: 500px;
 }
 .row {
-  margin-left: -40px;
+  margin-left: 0px;
   *zoom: 1;
 }
 .row:before,
@@ -210,7 +210,7 @@ a:hover {
 [class*="span"] {
   float: left;
   min-height: 1px;
-  margin-left: 40px;
+  margin-left: 0px;
 }
 .container,
 .navbar-static-top .container,
@@ -7425,9 +7425,9 @@ textarea {
    Header
    ========================================================================== */
 #header {
-  background: #fff;
+  background: #2F4F4F;
   *zoom: 1;
-  padding: 0px 0 0px 0;
+  padding: 20px 0 20px 0;
   border-bottom: 4px solid #eee;
 }
 #header:before,
@@ -7442,7 +7442,7 @@ textarea {
 #header:before,
 #header:after {
   display: table;
-  content: "";
+  /*content: ""; */
   line-height: 0;
 }
 #header:after {
@@ -7459,21 +7459,22 @@ textarea {
   position: relative;
   float: left;
   list-style: none;
-  margin-left: 20px;
+  margin-left: 10px;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 18px;
 }
 #header nav ul li a {
   float: left;
-  padding: 6px 10px 30px 10px;
+  padding: 8px 10px 8px 10px;
 }
 #header nav ul li a.selected {
-  color: #527f26;
+  color: #ffffff;
 }
 #header nav ul li.current-menu-item > a,
 #header nav ul li.current-menu-parent > a {
-  color: #52575f;
+  color: #ffffff;
+  background-color: #69bc34;
 }
 #header nav ul li ul {
   display: none;
@@ -7520,7 +7521,7 @@ section.hero {
   position: relative;
 }
 #main.page section.content {
-  padding: 20px 0;
+  margin-top: 10px;
 }
 #main.page section.content h1.page-title {
   font-size: 24px;
@@ -7535,7 +7536,7 @@ section.hero {
 
   font-weight: 300;
   line-height: 1.7;
-  margin-bottom: 28px;
+  margin-bottom: 15px;
 }
 #main.page section.content ul {
   list-style-type: square;
@@ -7596,7 +7597,7 @@ section.header p.excerpt {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 section.content {
-  padding: 20px 0 10px 0;
+  padding: 10px 0 5px 0;
 }
 section.content h1,
 section.content h2,
@@ -7607,14 +7608,14 @@ section.content h6 {
 
 }
 section.content [class*="span"] {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 section.content [class*="span"] [class*="span"] {
   margin-bottom: 0px;
 }
 section.features {
-  background: #2C2E2A/*#78ba37*/;
-  padding: 40px 0;
+  background: #2F4F4F /*#78ba37*/;
+  padding: 20px 0;
 }
 section.portfolio {
   padding: 20px 0 0 0;
@@ -7762,24 +7763,24 @@ section.map {
 }
 
 #feat1{
-    background: url("/css/promo/images/1.png") no-repeat scroll 20px center rgb(117,117,117);
+  background: url("/css/promo/images/1.png") no-repeat scroll 20px center rgb(120, 186, 55);
 }
 
 #feat2{
-    background: url("/css/promo/images/2.png") no-repeat scroll 20px center rgb(117,117,117);
+  background: url("/css/promo/images/2.png") no-repeat scroll 20px center rgb(120, 186, 55);
 }
 
 #feat3{
-    background: url("/css/promo/images/3.png") no-repeat scroll 20px 22px rgb(117,117,117)/*#52871D*/;
+  background: url("/css/promo/images/3.png") no-repeat scroll 20px 22px rgb(120, 186, 55);
 }
 
 .widget.feature h2 {
-  color: #fff;
+  color: #78ba37;
 }
 
 .widget.feature h3 {
   font-weight: 300;
-  color: #fff;
+  color: #78ba37;
 }
 .widget.feature p {
     color: #DEF0CD;
@@ -8668,9 +8669,19 @@ ul.portfolio-3col li.last {
   }
 }
 
-
 .container > a {
     display: block;
     float: left;
     width: auto;
+}
+
+.wrap {
+  _width: 70%;
+  color: #888;
+  font: 14px/20px Helvetica, Arial, sans-serif;
+  margin: 20px auto 0;
+  max-width: 800px;
+  text-align: center;
+  text-shadow: 0 -2px 1px #000;
+  -webkit-font-smoothing: antialiased;
 }

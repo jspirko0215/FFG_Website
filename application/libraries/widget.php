@@ -18,6 +18,18 @@ class Widget
         $this->widgets[] = array('name' => $widget_name, 'widget_title' => $widget_title, 'widget_content' => $data);
     }
 
+    public function getWidget($id, $name, $title, $preview, $data = '', $class = 'widget sortable', $settings = array())
+    {
+        $profile = false;
+        if (isset($data->profile))
+            $profile = true;
+        if ($name)
+            $data = $this->ci->load->view('widget/' . $name . '.php', $data, TRUE);
+        $widget = array('widget_id' => $id, 'widget_preview' => $preview, 'widget_title' => $title, 'widget_content' => $data, 'class' => $class, 'widget_settings' => $settings, 'profile_view' => $profile);
+        return $this->ci->load->view('widget/widget_tpl.php', $widget, TRUE);
+    }
+
+
     public function getWidgetLastVisits($title = '', $user_id = 0)
     {
         if (!$title)
@@ -26,17 +38,6 @@ class Widget
         $this->ci->load->model('member_model');
         $data['visits'] = $this->ci->member_model->getMemberLastVisits($user_id ? $user_id : $this->ci->session->userdata('logOn'), 10);
         return $this->getWidget('last_visits', $name, $title, 'visits.png', $data, 'widget nodrag');
-    }
-
-    public function getWidget($id, $name, $title, $preview, $data = '', $class = 'widget sortable', $settings = array())
-    {
-        $profile = false;
-        if (isset($data['profile']))
-            $profile = true;
-        if ($name)
-            $data = $this->ci->load->view('widget/' . $name . '.php', $data, TRUE);
-        $widget = array('widget_id' => $id, 'widget_preview' => $preview, 'widget_title' => $title, 'widget_content' => $data, 'class' => $class, 'widget_settings' => $settings, 'profile_view' => $profile);
-        return $this->ci->load->view('widget/widget_tpl.php', $widget, TRUE);
     }
 
     public function getWidgetRanks($title = '', $user_id = 0)
@@ -63,7 +64,7 @@ class Widget
     public function getWidgetGlobalStats($id = null, $settings = null, $title = 'Statistics Chart')
     {
         $name = 'fit_global';
-        $data = '';
+        $data = new \stdClass();
         $this->ci->load->model('member_model');
         if ($id == null) {
             $res = $this->ci->member_model->getMemberDayVisits($this->ci->session->userdata('logOn'));
@@ -97,8 +98,8 @@ class Widget
 
         //$data['dates']='['.implode(',',$arr['dates']).']';
         $data->sessionCount = $i;
-        $data->watts = json_encode($arr->watts);
-        $data->wattsComulative = json_encode($arr->wattsComulative);
+        $data->watts = json_encode($arr['watts']);
+        $data->wattsComulative = json_encode($arr['wattsComulative']);
 
         //print_r($data);
         //exit;

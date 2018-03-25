@@ -2,8 +2,8 @@
 <div id="main" role="main">
 <!-- Call to action ================= -->
             <section class="call-to-action">
-                <div class="container">
-                    <div class="row-fluid">
+
+                <div class="row-fluid">
 
                         <div class="widget call-to-action">
                             <div class="span9">
@@ -15,7 +15,7 @@
                         </div><!-- /call-to-action -->
 
                     </div>
-                </div><!-- /container -->
+
             </section><!-- /call-to-action -->
 
 

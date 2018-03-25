@@ -1,25 +1,26 @@
+<?php $_SESSION['current'] = 'Team'; ?>
 <div id="main" role="main" class="page">
 
-
     <!-- Header area ================== -->
-    <section class="header">
+    <!--
+<section class="header">
 
-        <div class="container">
-            <div class="row">
+    <div class="container">
+        <div class="row">
 
-                <div class="span12">
+            <div class="span12">
 
-                    <h1 class="page-title">Management Team</h1>
+                <h1 class="page-title">Our Team</h1>
 
-                    <p class="excerpt">
+                <p class="excerpt">
 
-                    </p>
-                </div>
-
+                </p>
             </div>
-        </div><!-- /container -->
 
-    </section><!-- /header -->
+        </div>
+    </div><!-- /container -->
+
+    <!-- </section> /header -->
 
     <!-- Content area ================== -->
     <section class="content">
@@ -33,9 +34,13 @@
                     <div class="coworker">
                         <img src="/images/promo/team/john.png" class="alignleft imgbox2 ffg_team" alt="" />
                         <h3>John Spirko</h3>
-                        <h4>Chief Executive Officer</h4>
+                        <h4>Founder</h4>
                         <p>
-                            John Spirko has over 15 years experience leading product management efforts in the Software and Services industry. He has a passion for directing development, marketing, and sales activities needed to make software solutions effective for a market. He holds a bachelor’s degree in electrical engineering from the New Jersey Institute of Technology and an MBA from the University of California-Irvine.
+                            John Spirko has over 15 years experience leading product management efforts in the Software
+                            and Services industry. He has a passion for directing development, marketing, and sales
+                            activities needed to make effective and valued fitness solutions. He holds a bachelor’s
+                            degree in electrical engineering from the New Jersey Institute of Technology and an MBA from
+                            the University of California-Irvine.
                         </p>
                     </div>
 

@@ -15,41 +15,6 @@
           content="human energy,power gym,energy gym,green energy,generate electricity,human generated electricity,green gyms,green gym equipment"/>
     <meta name="viewport" content="width=device-width"/>
 
-    <?php
-    /** -- Copy from here -- */
-    if (!empty($meta))
-        foreach ($meta as $name => $content) {
-            echo "\n\t\t";
-            ?>
-            <meta name="<?php echo $name; ?>" content="<?php echo $content; ?>" /><?php
-        }
-    echo "\n";
-
-    if (!empty($canonical)) {
-        echo "\n\t\t";
-        ?>
-        <link rel="canonical" href="<?php echo $canonical ?>" /><?php
-
-    }
-    echo "\n\t";
-
-    foreach ($css as $file) {
-        echo "\n\t\t";
-        ?>
-        <link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php
-    }
-    echo "\n\t";
-
-    foreach ($js as $file) {
-        echo "\n\t\t";
-        ?>
-        <script src="<?php echo $file; ?>"></script><?php
-    }
-    echo "\n\t";
-
-    /** -- to here -- */
-    ?>
-
 
     <!--[if lte IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -63,27 +28,10 @@
 
     <script type="text/javascript" src="/js/promo/jquery.js"></script>
     <script type="text/javascript">
-        <?php if($this->uri->segment(1) == '')
-        { ?>
-
-        $(document).ready(function () {
-            $counters = $this - > config - > config - > item('counters');
-            $('#energy').acounters({
-                method: '1',
-                number: <?php echo round($counters['wattHoursCount'] / 1000, 2); ?>,
-                suffix: 'kW/h'
-            });
-            $('#social').acounters({method: '2', number: <?php echo $counters['membersCount']; ?>, suffix: 'member'});
-            $('#competitions').acounters({number: <?php echo $counters['teamsCount']; ?>, suffix: 'team', method: '3'});
-
-        });
-        <?php } ?>
-
 
     </script>
 
-</head>
-<body onresize="resizeH()" onLoad="resizeH()">
+    <!-- <body onresize="resizeH()" onLoad="resizeH()"> -->
 <script type="text/javascript">
 
     var _gaq = _gaq || [];
@@ -100,44 +48,42 @@
     })();
 </script>
 
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser
-    today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better
-    experience this site.</p>
-<![endif]-->
-
 <!-- Header area ================== -->
 <header id="header">
-    <div class="container">
+    <div class="container" STYLE="height: 40px;">
         <a href="/"><img src="assets/themes/default/images/logo.png" alt="FitForGreen"/></a>
 
-        <nav id="mainmenu" class="menu">
+        <nav id="mainmenu" class="menu" STYLE="height: 40px; margin: 5px;">
             <ul>
-                <li class="current-menu-item"><a href="/">Home</a></li>
-                <li><a href="#">Products</a>
-                    <ul>
-                        <li><a href="/products">In-Gym Solution</a></li>
-                    </ul>
-                    <!-- <li ><a href="#">About</a>
-                        <ul>
-                            <li ><a href="/energy">Renewable Energy</a></li>
-                            <li ><a href="/social">Social Media</a></li>
-
-                        </ul>
-                    </li> -->
-                <li><a href="/about">About</a></li>
-                <li><a href="/team">Management Team</a></li>
-                <!--<li ><a href="/blog">Blog</a></li>-->
-                <li><a href="/contactus">Contact us</a></li>
-                <li><a href="/blog">Blog</a>
-                <li><a href="/members">Login</a></li>
+                <li <?php if ($_SESSION['current'] == 'Home') {
+                    echo 'class="current-menu-item"';
+                } ?>><a href="/">Home</a></li>
+                <li <?php if ($_SESSION['current'] == 'About') {
+                    echo 'class="current-menu-item"';
+                } ?>><a href="/about">About</a></li>
+                <li <?php if ($_SESSION['current'] == 'Products') {
+                    echo 'class="current-menu-item"';
+                } ?>><a href="/products">Products</a></li>
+                <li <?php if ($_SESSION['current'] == 'Team') {
+                    echo 'class="current-menu-item"';
+                } ?>><a href="/team">Management Team</a></li>
+                <li <?php if ($_SESSION['current'] == 'Contact') {
+                    echo 'class="current-menu-item"';
+                } ?>><a href="/contactus">Contact us</a></li>
+                <li <?php if ($_SESSION['current'] == 'Blog') {
+                    echo 'class="current-menu-item"';
+                } ?>><a href="/blog">Blog</a>
+                <li <?php if ($_SESSION['current'] == 'Members') {
+                    echo 'class="current-menu-item"';
+                } ?>><a href="/members">Login</a></li>
             </ul>
         </nav>
-
     </div><!-- /container -->
 </header><!-- /header -->
+</head>
 
 <?php echo $output; ?>
+
 <!-- Footer area ================== -->
 <footer id="footer">
 
@@ -152,21 +98,21 @@
                 <div class="span4 widget feature">
                     <a href="#">
                         <i class="icon-feature" id="feat1"></i>
-                        <h3>Total Workout Energy</h3>
+                        <h3>Power Generated</h3>
                         <h2><?php echo round($counters['wattHoursCount'] / 1000, 2); ?> kW/h</h2>
                     </a>
                 </div><!-- /feature#1 -->
                 <div class="span4 widget feature">
                     <a href="#">
                         <i class="icon-feature" id="feat2"></i>
-                        <h3>Social Media</h3>
+                        <h3>Community</h3>
                         <h2><?php echo $counters['membersCount']; ?> members</h2>
                     </a>
                 </div><!-- /feature#2 -->
                 <div class="span4 widget feature">
                     <a href="#">
                         <i class="icon-feature" id="feat3"></i>
-                        <h3>Friendly Competition</h3>
+                        <h3>Teaming</h3>
                         <h2><?php echo $counters['teamsCount']; ?> teams</h2>
                     </a>
                 </div><!-- /feature#3 -->
@@ -294,5 +240,5 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
-</body>
+
 </html>

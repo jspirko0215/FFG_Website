@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<error_response>
+    <error_set>
+        <error field="username">Such Username already exists</error>
+        <error field="email">Such E-mail already exists</error>
+    </error_set>
+</error_response>

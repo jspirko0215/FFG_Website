@@ -13,21 +13,11 @@ class Example extends CI_Controller {
         $this->load->model('global_model');
         $res=$this->global_model->getPromoCounters();
         $this->config->set_item('counters',$res);
-
-
-        //parent::__construct();
-        //$this->load->model('global_model');
-        //$res=$this->global_model->getPromoCounters();
-        //$this->config->set_item('counters',$res);
-        //$this->load->helper('url');
-
-        //$this->_init();
 	}
 
 	private function _init()
 	{
         $this->output->set_template('new_site_template');
-
 		$this->load->js('assets/themes/default/js/jquery-1.9.1.min.js');
         $this->load->js('assets/themes/default/hero_files/bootstrap-transition.js');
 		$this->load->js('assets/themes/default/hero_files/bootstrap-collapse.js');
@@ -36,38 +26,62 @@ class Example extends CI_Controller {
 
 	public function index()
 	{
-        $this->load->view('/promo/content',
-            array('content' => $this->load->view('/promo/page_tpl/land.php',
-                array('slider' => $this->load->view('/promo/slider.php', '', true)), TRUE)));
+        $_SESSION['current'] = 'Home';
+        $this->output->set_template('new_site_template');
+        $this->load->view('/themes/content',
+            array('content' => $this->load->view('themes/page_tpl/land.php',
+                ['slider' => $this->load->view('themes/page_tpl/slider.php', '', true)], TRUE)));
 
 	}
 
     public function home()
     {
+        $_SESSION['current'] = 'Home';
         $this->load->view('themes/page_tpl/home');
+    }
+
+    public function products()
+    {
+        $_SESSION['current'] = 'Products';
+        $this->load->view('themes/page_tpl/products');
     }
 
     public function team()
     {
-
+        $_SESSION['current'] = 'Team';
         $this->load->view('themes/page_tpl/team');
     }
 
     public function about()
     {
-
-        $this->load->view('themes/page_tpl/about');
+        $this->load->model('member_model');
+        $res = $this->member_model->getGymDayVisits(null, '2012-01-06 00:00:00');
+        $arr = array();
+        $arr['watts'] = array();
+        $i = 0;
+        foreach ($res as $x) {
+            if (!$arr['watts']) {
+                $arr['watts'][] = array((int)strtotime($x['visitDate'] . ' -1 day') * 1000, 0);
+                $arr['wattsComulative'][] = array((int)strtotime($x['visitDate'] . ' -1 day') * 1000, 0);
+            }
+            $i++;
+            $arr['watts'][] = array((int)strtotime($x['visitDate']) * 1000, (float)$x['wattHours']);
+            $arr['wattsComulative'][] = array((int)strtotime($x['visitDate']) * 1000, ((float)($x['wattHours'] + $arr['wattsComulative'][$i - 1][1])));
+        }
+        $data['watts'] = json_encode($arr['watts']);
+        $data['wattsComulative'] = json_encode($arr['wattsComulative']);
+        $_SESSION['current'] = 'About';
+        $this->parser->parse('themes/page_tpl/about', $data);
     }
 
     public function contactus()
     {
-
-        $this->load->view('themes/contactus');
+        $_SESSION['current'] = 'Contact';
+        $this->load->view('themes/page_tpl/contactus');
     }
 
     public function send($options)
     {
-
 
         if(empty($options) ) return false;
         $this->load->library(array('email'));
@@ -89,28 +103,4 @@ class Example extends CI_Controller {
         $this->email->send();
         // echo $this->email->print_debugger();
     }
-
-    public function example_1()
-    {
-        $this->load->view('ci_simplicity/example_1');
-        //echo site_url('pages/view/home');
-    }
-
-	public function example_2()
-	{
-		$this->output->set_template('simple');
-		$this->load->view('ci_simplicity/example_2');
-	}
-
-	public function example_3()
-	{
-		$this->load->section('sidebar', 'ci_simplicity/sidebar');
-		$this->load->view('ci_simplicity/example_3');
-	}
-
-	public function example_4()
-	{
-		//$this->output->unset_template();
-		$this->load->view('ci_simplicity/example_4');
-	}
 }

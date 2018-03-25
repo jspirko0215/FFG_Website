@@ -326,7 +326,7 @@ class Member_model extends CI_Model
     function getCompetitions($memberId)
     {
         $res = array();
-        $this->db->select('DISTINCT c.*')
+        $this->db->select('*')
             ->from('competitions c')
             ->join('competitionRegistrations cr', 'cr.competitionID=c.competitionID', 'inner')
             ->join('teamRegistrations tr', 'tr.teamID=cr.teamID', 'inner')

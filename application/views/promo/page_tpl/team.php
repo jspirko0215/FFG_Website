@@ -1,7 +1,7 @@
         <div id="main" role="main" class="page">
-
-
             <!-- Header area ================== -->
+
+
             <section class="header">
 
                 <div class="container">

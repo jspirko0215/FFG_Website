@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "auth"
+AuthUserFile C:\xampp\htdocs\FitforGreen_Site\apidocs\.htpasswd
+Require user ffg
