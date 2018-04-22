@@ -235,7 +235,7 @@ $config['log_threshold'] = 2;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = 'c:\xampp\tmp\php_logs';
+$config['log_path'] = '/tmp/php_logs/';
 
 /*
 |--------------------------------------------------------------------------

@@ -54,10 +54,9 @@ function &DB($params = '', $query_builder_override = NULL)
 	if (is_string($params) && strpos($params, '://') === FALSE)
 	{
 		// Is the config file in the environment folder?
-		if ( ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/database.php')
-			&& ! file_exists($file_path = APPPATH.'config/database.php'))
-		{
-			show_error('The configuration file database.php does not exist.');
+        if (!file_exists($file_path = APPPATH . 'config/' . ENVIRONMENT . '/Database.php')
+            && !file_exists($file_path = APPPATH . 'config/Database.php')) {
+            show_error('The configuration file Database.php does not exist.');
 		}
 
 		include($file_path);
@@ -70,11 +69,10 @@ function &DB($params = '', $query_builder_override = NULL)
 			{
 				if ($path !== APPPATH)
 				{
-					if (file_exists($file_path = $path.'config/'.ENVIRONMENT.'/database.php'))
+                    if (file_exists($file_path = $path . 'config/' . ENVIRONMENT . '/Database.php'))
 					{
 						include($file_path);
-					}
-					elseif (file_exists($file_path = $path.'config/database.php'))
+					} elseif (file_exists($file_path = $path . 'config/Database.php'))
 					{
 						include($file_path);
 					}
@@ -94,11 +92,11 @@ function &DB($params = '', $query_builder_override = NULL)
 
 		if ( ! isset($active_group))
 		{
-			show_error('You have not specified a database connection group via $active_group in your config/database.php file.');
+            show_error('You have not specified a database connection group via $active_group in your config/Database.php file.');
 		}
 		elseif ( ! isset($db[$active_group]))
 		{
-			show_error('You have specified an invalid database connection group ('.$active_group.') in your config/database.php file.');
+            show_error('You have specified an invalid database connection group (' . $active_group . ') in your config/Database.php file.');
 		}
 
 		$params = $db[$active_group];

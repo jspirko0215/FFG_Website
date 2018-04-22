@@ -8,6 +8,21 @@ class Global_model extends CI_Model
         parent::__construct();
     }
 
+    function getGlobalStats($startDate = null, $endDate = null, $limit = 30)
+    {
+        $this->db->select('*');
+        $this->db->from('globalStatsMonthly');
+        if ($startDate)
+            $this->db->where('visitDate >= ', $startDate);
+        if ($endDate)
+            $this->db->where('visitDate<=', $endDate, false);
+        $this->db->order_by('visitDate', "desc");
+        $res = $this->db->get()->result_array();
+        $res = array_reverse($res);
+        return $res;
+    }
+
+
     function getYearStats($gymId=null, $limit=12)
     {
         $this->db->_protect_identifiers = false;
@@ -27,25 +42,27 @@ class Global_model extends CI_Model
     function getPromoCounters()
     {
         $res=array();
-        $this->db->select('count(*) as membersCount');
-        $this->db->from('members');
+        $this->db->select('sum(wattHours) as wattHoursCount, sum(memberCount) as membersCount, sum(dailyDonation) as totalDonation');
+        $this->db->from('globalStatsMonthly');
         $row = $this->db->get()->row_array();
+        $res['wattHoursCount'] = $row['wattHoursCount'];
         $res['membersCount']=$row['membersCount'];
-        
-        $this->db->select('count(*) as teamsCount');
-        $this->db->from('teams');
-        $row = $this->db->get()->row_array();
-        $res['teamsCount']=$row['teamsCount'];
-        
-        $this->db->select('sum(wattHours) as wattHoursCount');
-        $this->db->from('gymVisits');
-        $row = $this->db->get()->row_array();
-        $res['wattHoursCount']=$row['wattHoursCount'];
-        
-        $this->db->select('sum(workoutDurationSeconds) as workoutDurationCount');
-        $this->db->from('memberVisits');
-        $row = $this->db->get()->row_array();
-        $res['workoutDurationCount']=round($row['workoutDurationCount'],2);
+        $res['totalDonation'] = $row['totalDonation'];
+
+        //$this->db->select('sum(dailyDonation) as totalDonation');
+        //$this->db->from('globalStats');
+        //$row = $this->db->get()->row_array();
+        //$res['totalDonation']=$row['totalDonation'];
+
+        //$this->db->select('sum(wattHours) as wattHoursCount');
+        //$this->db->from('globalStats');
+        //$row = $this->db->get()->row_array();
+        //$res['wattHoursCount']=$row['wattHoursCount'];
+
+        //$this->db->select('sum(workoutDurationSeconds) as workoutDurationCount');
+        //$this->db->from('memberVisits');
+        //$row = $this->db->get()->row_array();
+        //$res['workoutDurationCount']=round($row['workoutDurationCount'],2);
         
         return $res;
     }

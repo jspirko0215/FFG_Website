@@ -480,7 +480,7 @@ class Members extends CI_Controller
         $this->load->model('member_model');
         $this->load->library(array('form_validation'));
 
-        $this->fb_app = $this->fb_ignited->fb_get_app();
+        //$this->fb_app = $this->fb_ignited->fb_get_app();
 
 
         $this->form_validation->set_rules('username', 'Username', "trim|required"); //callback_uniq_cpname_check
@@ -494,7 +494,7 @@ class Members extends CI_Controller
 
         $data = array();
 
-        $data['fb'] = $this->fb_app;
+        //$data['fb'] = $this->fb_app;
 
         $data['state'] = $this->utility->drawSelectState('state', null, false);
         $data['username'] = '';
@@ -564,8 +564,9 @@ class Members extends CI_Controller
         } else {
 
         }
-        $this->template->write_view('content', 'registration_view.php', $data);
-        $this->template->render();
+        //$this->template->write_view('content', 'registration_view.php', $data);
+        //$this->template->render();
+        $this->parser->parse('themes/page_tpl/registration_view.php', $data);
     }
 
     function posttofb($fb_uid = null, $msg_obj = null)

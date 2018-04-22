@@ -23,7 +23,6 @@ class Member_model extends CI_Model
         $result = $this->db->get_where('members', array('username' => $username, 'password' => md5($password)))->row_array();
         if ($result) {
             $this->db->where('memberID', $result['memberID']);
-            $this->db->update('members', array('isActive' => 1));
         }
         return $result;
     }

@@ -13,7 +13,7 @@ class Api2_model extends CI_Model
         if($res)
         {
             $this->db->where('memberID', $res['memberID']);
-            $this->db->update('members', array('isActive' => 1));
+
         }
         return $res;
     }

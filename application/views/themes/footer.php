@@ -55,7 +55,7 @@
                                 <strong>Fit for Green, Inc.</strong><br>
                                 28492 Casanal<br/>
 				Mission Viejo, CA 92692<br/>
-				Phone: (866)936-7831<br/>
+                                Phone: (800)479-2148<br/>
                                 Email: support@fitforgreen.com
                             </address>
                         </div>

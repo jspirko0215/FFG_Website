@@ -61,7 +61,7 @@ $autoload['packages'] = array(APPPATH.'third_party');
 //$autoload['libraries'] = array();
 //$autoload['libraries'] = array('database', 'session', 'table', 'utility', 'fb_ignited');
 
-$autoload['libraries'] = array('database', 'session', 'parser', 'utility');
+$autoload['libraries'] = array('database', 'Session', 'Parser', 'Utility');
 
 /*
 | -------------------------------------------------------------------

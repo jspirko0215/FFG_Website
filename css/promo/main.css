@@ -565,7 +565,7 @@ h2 {
   line-height: 40px;
 }
 h3 {
-  font-size: 24px;
+    font-size: 20px;
   line-height: 40px;
 }
 h4 {
@@ -4002,7 +4002,7 @@ a.thumbnail:hover {
   -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
   -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
+
   background-clip: padding-box;
 }
 .modal.fade {
@@ -7368,22 +7368,24 @@ h5,
 h6 {
   font-family: 'Quicksand';
 }
+
 a {
-  color: #78ba37;
+    color: #0053FF;
 }
 a:hover {
-  color: #527f26;
+    color: #00ddff;
 }
 .baseColor {
-  color: #78ba37;
+    color: #00ddff;
 }
 .baseBG {
-  background: #78ba37;
+    background: #00ddff;
 }
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
 }
+
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
@@ -7425,7 +7427,7 @@ textarea {
    Header
    ========================================================================== */
 #header {
-  background: #2F4F4F;
+    background: #ffffff;
   *zoom: 1;
   padding: 20px 0 20px 0;
   border-bottom: 4px solid #eee;
@@ -7460,21 +7462,28 @@ textarea {
   float: left;
   list-style: none;
   margin-left: 10px;
-  font-weight: bold;
   text-transform: uppercase;
-  font-size: 18px;
+    font-size: 15px;
 }
 #header nav ul li a {
   float: left;
   padding: 8px 10px 8px 10px;
+    color: #2f4f4f;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
 }
 #header nav ul li a.selected {
   color: #ffffff;
 }
 #header nav ul li.current-menu-item > a,
 #header nav ul li.current-menu-parent > a {
-  color: #ffffff;
-    background-color: #2F4F4F;
+    color: #00ddff;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    font-size: 18px;
 }
 #header nav ul li ul {
   display: none;
@@ -7484,7 +7493,7 @@ textarea {
   margin: 0px;
   background: #fff;
   width: 160px;
-  border-top: 4px solid #78ba37;
+    border-top: 4px solid #00ddff;
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
@@ -7539,7 +7548,6 @@ section.hero {
   margin-bottom: 15px;
 }
 #main.page section.content ul {
-  list-style-type: square;
 }
 #main.page section.content ul li,
 #main.page section.content ol li {
@@ -7614,7 +7622,7 @@ section.content [class*="span"] [class*="span"] {
   margin-bottom: 0px;
 }
 section.features {
-  background: #2F4F4F /*#78ba37*/;
+    background: #FFFFFF /*#78ba37*/;
   padding: 20px 0;
 }
 section.portfolio {
@@ -7763,24 +7771,24 @@ section.map {
 }
 
 #feat1{
-  background: url("/css/promo/images/1.png") no-repeat scroll 20px center rgb(120, 186, 55);
+    background: url("/css/promo/images/1.png") no-repeat scroll 20px center rgb(90, 200, 90);
 }
 
 #feat2{
-  background: url("/css/promo/images/2.png") no-repeat scroll 20px center rgb(120, 186, 55);
+    background: url("/css/promo/images/2.png") no-repeat scroll 20px center rgb(90, 90, 200);
 }
 
 #feat3{
-  background: url("/css/promo/images/3.png") no-repeat scroll 20px 22px rgb(120, 186, 55);
+    background: url("/css/promo/images/3.png") no-repeat scroll 20px 22px rgb(200, 180, 0);
 }
 
 .widget.feature h2 {
-  color: #78ba37;
+    color: #2f4f4f;
 }
 
 .widget.feature h3 {
   font-weight: 300;
-  color: #78ba37;
+    color: #2f4f4f;
 }
 .widget.feature p {
     color: #DEF0CD;
@@ -7980,6 +7988,7 @@ section.map {
 article.post {
   margin-bottom: 24px;
   padding-bottom: 20px;
+    padding-right: 30px;
   background: url('/css/promo/images/hr.png') repeat-x bottom;
 }
 article.post h2.post-title {

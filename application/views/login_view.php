@@ -33,11 +33,9 @@
         </div>
     </section>
 
-    <section>
+    <section style="text-align: center">
 
-        <button id="bfb" class="fl bfacebook" title="Sign In with facebook"><img src="/images/facebook.png"/>Sign In
-        </button>
-        <button class="fr default">Sign In</button>
+        <button type="button">Sign In</button>
         <input type="hidden" name="submit" value="1"/>
 
     </section>
@@ -88,7 +86,7 @@
 
             FB.login(function (response) {
                 if (response) {
-                    if (response.authResponse.userID ==<?php echo $cron_facebookid ?>) {
+                    if (response.authResponse.userID //==<?php echo $cron_facebookid ?>) {
                         window.location = "https://www.facebook.com/dialog/oauth?client_id=<?php echo $fb['fb_appid']?>&redirect_uri=<?php echo base_url()?>members/updateAccessToken&scope=manage_pages,offline_access,publish_stream";
 
 

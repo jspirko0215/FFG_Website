@@ -135,8 +135,8 @@ $(document).ready(function(){
         onComplete: function(id, fileName, responseJSON){
             $('#upload_avatar').fadeOut('100', function(){$('#delete_avatar').fadeIn(200);});
             $('#avatar').val(responseJSON.filename);
-            
-            $('#avatar_preview').html('<img src="/uploads/preload/'+responseJSON.filename+'" />').fadeIn(400);
+
+            $('#avatar_preview').html('<img src=' + responseJSON.filename + '"/uploads/preload" />').fadeIn(400);
             isUpload = true;
         }
     });

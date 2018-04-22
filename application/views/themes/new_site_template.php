@@ -51,7 +51,7 @@
 <!-- Header area ================== -->
 <header id="header">
     <div class="container" STYLE="height: 40px;">
-        <a href="/"><img src="assets/themes/default/images/logo.png" alt="FitForGreen"/></a>
+        <a href="/"><img src="/assets/themes/default/images/logo.png" alt="FitForGreen"/></a>
 
         <nav id="mainmenu" class="menu" STYLE="height: 40px; margin: 5px;">
             <ul>
@@ -66,10 +66,10 @@
                 } ?>><a href="/products">Products</a></li>
                 <li <?php if ($_SESSION['current'] == 'Team') {
                     echo 'class="current-menu-item"';
-                } ?>><a href="/team">Management Team</a></li>
+                } ?>><a href="/team">Team</a></li>
                 <li <?php if ($_SESSION['current'] == 'Contact') {
                     echo 'class="current-menu-item"';
-                } ?>><a href="/contactus">Contact us</a></li>
+                } ?>><a href="/contactus">Contact</a></li>
                 <li <?php if ($_SESSION['current'] == 'Blog') {
                     echo 'class="current-menu-item"';
                 } ?>><a href="/blog">Blog</a>
@@ -96,24 +96,24 @@
             <div class="row-fluid">
 
                 <div class="span4 widget feature">
-                    <a href="#">
+                    <a href="about/#AboutPowerGeneration">
                         <i class="icon-feature" id="feat1"></i>
-                        <h3>Power Generated</h3>
-                        <h2><?php echo round($counters['wattHoursCount'] / 1000, 2); ?> kW/h</h2>
+                        <h3>Power Generation</h3>
+                        <h2><?php echo round($counters['wattHoursCount'] / 200000, 3); ?>M Lights</h2>
                     </a>
                 </div><!-- /feature#1 -->
                 <div class="span4 widget feature">
-                    <a href="#">
+                    <a href="about/#AboutSocialEngagement">
                         <i class="icon-feature" id="feat2"></i>
-                        <h3>Community</h3>
+                        <h3>Social Engagement</h3>
                         <h2><?php echo $counters['membersCount']; ?> members</h2>
                     </a>
                 </div><!-- /feature#2 -->
                 <div class="span4 widget feature">
-                    <a href="#">
+                    <a href="about/#AboutCharitableGiving">
                         <i class="icon-feature" id="feat3"></i>
-                        <h3>Teaming</h3>
-                        <h2><?php echo $counters['teamsCount']; ?> teams</h2>
+                        <h3>Environmental Charity</h3>
+                        <h2>$<?php echo $counters['totalDonation']; ?> </h2>
                     </a>
                 </div><!-- /feature#3 -->
 
@@ -132,9 +132,7 @@
 
                 <div class="span3 widget">
                     <h4>About Fit For Green</h4>
-                    <li><a href="http://www.youtube.com/watch?v=RpUVw_rOl6c">This introductory video presentation will
-                            feature an explanation of the Fit for Green solution, and give a current status of the
-                            company and products.</a>
+                    <a href="https://www.youtube.com/watch?v=bFseO2wBkTI">Watch Product Intro video </a>
                 </div>
 
                 <div class="span3 widget">
@@ -143,7 +141,7 @@
                         <strong>Fit for Green, Inc.</strong><br>
                         28492 Casanal<br/>
                         Mission Viejo, CA 92692<br/>
-                        Phone: (866)936-7831<br/>
+                        Phone: (800)479-2148<br/>
                         Email: support@fitforgreen.com
                     </address>
                 </div>
